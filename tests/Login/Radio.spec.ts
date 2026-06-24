@@ -1,30 +1,19 @@
-import {test, expect} from '@playwright/test';
-import { Basefeild } from '../Page/Basepage';
-import { Radiofeild } from '../Page/Radiofeild';
-//import { defineConfig } from '@playwright/test';
+import { test, expect } from '../fixtures/Page.fixtures';
 import testData from '../../data/Test-data.json';
-//export default defineConfig({
-// reporter: 'html',
-//});
 
-test('login test', async ({ page }) => {
-
-    const BasePage = new Basefeild(page);
-    const Radiopage = new Radiofeild(page);
-    
-    //await BasePage.gotoHomePage();
+test('login test', async ({ page, BasePage, RadioPage }) => {
     
     await page. goto('https://qamatters.github.io/demoautomationWebSite/fields.html');
 
     await BasePage.RadioField();
 
-    await Radiopage.FavoriteOS(testData.FavouriteOS);
+    await RadioPage.FavoriteOS(testData.FavouriteOS);
     await expect(page.getByLabel(testData.FavouriteOS)).toBeChecked();
 
-    await Radiopage.PreferredBrowser();
+    await RadioPage.PreferredBrowser();
     await expect(page.getByLabel('Chrome')).toBeChecked();
 
-    await Radiopage.AutomationTools();
+    await RadioPage.AutomationTools();
     await expect(page.getByLabel('Playwright')).toBeChecked();
     
     await page.screenshot({
