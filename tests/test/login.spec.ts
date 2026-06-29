@@ -6,7 +6,8 @@ test('login test', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
 
-    await loginPage.gotoLoginPage();
+
+    await page.goto('https://www.saucedemo.com/');
     await loginPage.Username(testData.User.username);
     await loginPage.Password(testData.User.password);
     await loginPage.Login();
