@@ -1,7 +1,10 @@
 import {Page, Locator} from '@playwright/test'
 
-export class LoginPage{
+export class swaglabLoginPage{
 constructor(private page: Page) {}
+async loginurl(){
+    await this.page.goto('https://www.saucedemo.com/');
+}
  
 async Username (username: string) { 
 await this.page.locator('[data-test="username"]').fill(username);
